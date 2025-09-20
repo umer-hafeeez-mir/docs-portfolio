@@ -3,100 +3,256 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Umer Mir · Documentation Portfolio</title>
-  <meta name="description" content="Portfolio of Umer Mir — documentation leader specializing in Docs-as-Code, IA, and content automation." />
-  <link rel="canonical" href="https://umer-hafeez-mir.github.io/portfolio/" />
-  <meta property="og:title" content="Umer Mir · Documentation Portfolio" />
-  <meta property="og:description" content="IA, Docs-as-Code, and GPT automation — selected work and case studies." />
+  <title>Umer Mir · Documentation & Content Systems</title>
+  <meta name="description" content="Umer Mir — documentation leader specializing in Docs‑as‑Code (MDX), information architecture, and GPT‑powered content automation." />
+  <link rel="canonical" href="https://umer-hafeeez-mir.github.io/portfolio/" />
+  <meta property="og:title" content="Umer Mir · Documentation & Content Systems" />
+  <meta property="og:description" content="IA, Docs‑as‑Code, and GPT automation — selected work and timeline of impact." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://umer-hafeez-mir.github.io/portfolio/" />
+  <meta property="og:url" content="https://umer-hafeeez-mir.github.io/portfolio/" />
   <meta property="og:image" content="og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#f97316" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23f97316' d='M128 12 28 64v128l100 52 100-52V64z'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23f97316' d='M128 12 28 64v128l100 52 100-52V64z'/%3E%3Cpath fill='%23fff' d='M72 92h112v16H72zM72 124h92v16H72zM72 156h112v16H72z'/%3E%3C/svg%3E" />
   <style>
-    :root {
-      --bg:#f8fafc;
-      --ink:#0f172a;
-      --muted:#475569;
-      --line:#e2e8f0;
-      --accent:#f97316;
-      --accent-light:#fb923c;
-      --card-bg:#ffffff;
-      --shadow:0 6px 18px rgba(0,0,0,.08);
-      --radius:16px;
+    :root{
+      --bg:#f8fafc;          /* page */
+      --ink:#0f172a;          /* text */
+      --muted:#64748b;        /* secondary */
+      --surface:#ffffff;      /* cards */
+      --line:#e2e8f0;         /* rules */
+      --accent:#f97316;       /* orange */
+      --accent-2:#fb923c;     /* lighter orange */
+      --shadow:0 14px 32px rgba(2,6,23,.08);
+      --radius:18px;
+      --maxw:1100px;
     }
-    body { font-family:system-ui,sans-serif;margin:0;background:var(--bg);color:var(--ink); }
-    header { text-align:center;padding:60px 20px; }
-    header h1 { font-size:2.5rem;margin-bottom:10px;color:var(--accent); }
-    header p { color:var(--muted);max-width:600px;margin:0 auto; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial;color:var(--ink);background:var(--bg)}
+    a{color:var(--ink);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-    .timeline { position:relative;margin:60px auto;max-width:800px; }
-    .timeline::before { content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--line);transform:translateX(-50%); }
-    .entry { position:relative;width:50%;padding:20px 40px;box-sizing:border-box; }
-    .entry:nth-child(odd) { left:0;text-align:right; }
-    .entry:nth-child(even) { left:50%;text-align:left; }
-    .dot { position:absolute;top:32px;left:50%;transform:translate(-50%,-50%);width:18px;height:18px;background:var(--accent);border-radius:50%;border:3px solid var(--bg);z-index:1;box-shadow:0 0 0 4px rgba(249,115,22,.15); }
-    .entry h3 { margin-top:0;color:var(--accent); }
-    .entry p { margin:6px 0;color:var(--muted); }
+    /* Sticky header */
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.65);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid #eef2f7}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:14px 18px;display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    nav{margin-left:auto;display:flex;gap:18px}
+    nav a{color:#334155;font-weight:800}
+    nav a:hover{color:var(--ink)}
 
-    section { padding:60px 20px;max-width:800px;margin:0 auto; }
-    h2 { margin-bottom:20px;color:var(--accent); }
-    a { color:var(--accent); }
-    footer { text-align:center;padding:30px;border-top:1px solid var(--line);color:var(--muted);background:#ffffff; }
+    /* Sections */
+    .section{max-width:var(--maxw);margin:0 auto;padding:72px 18px}
+    .kicker{color:#ef7d3a;font-weight:900;letter-spacing:.3px;text-transform:uppercase;font-size:12px}
+    h1{font-size:clamp(34px,3.8vw,54px);line-height:1.05;margin:12px 0 10px}
+    p.lead{color:var(--muted);font-size:clamp(16px,1.25vw,18px);max-width:72ch}
+
+    /* Hero split */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .chip{border:1px solid #e5e7eb;color:#475569;background:#f8fafc;border-radius:999px;padding:8px 12px;font-size:13px}
+    .cta{display:flex;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:none;cursor:pointer;font-weight:900}
+    .btn.primary{background:linear-gradient(180deg,#f97316,#ea580c);color:#fff;box-shadow:0 12px 26px rgba(249,115,22,.25)}
+    .btn.secondary{background:#fff;color:#0f172a;border:1px solid #e5e7eb;box-shadow:var(--shadow)}
+
+    .card{background:var(--surface);border:1px solid #e5e7eb;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .chart-card{padding:10px;border-radius:24px}
+
+    /* Timeline */
+    #timeline .kicker{display:block;margin-bottom:6px}
+    #timeline h2{margin-bottom:16px}
+    .timeline{position:relative;margin-top:8px}
+    .timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--line);transform:translateX(-50%)}
+    .row{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:22px 0}
+    .dot{position:absolute;left:50%;top:34px;transform:translate(-50%,-50%);width:16px;height:16px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 6px rgba(249,115,22,.15)}
+    .item h3{margin:4px 0 4px}
+    .item .sub{color:var(--muted);font-size:13px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .tag{background:#fff;border:1px solid rgba(249,115,22,.35);color:#9a4d20;padding:4px 10px;border-radius:999px;font-size:12px}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .timeline::before{left:12px}
+      .row{grid-template-columns:1fr;padding-left:28px}
+      .dot{left:12px}
+    }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <h1>Umer Mir</h1>
-    <p>Documentation leader focused on information architecture, Docs-as-Code, and automation with GPTs. I design scalable systems and help teams publish faster with higher quality.</p>
+    <div class="wrap">
+      <div class="brand">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#f97316" d="M12 1.5 2.5 6.5v11l9.5 5 9.5-5v-11z"/><path fill="#fff" d="M6.5 8.5h11v1.6h-11zM6.5 12h9v1.6h-9zM6.5 15.2h11v1.6h-11z"/></svg>
+        <span>Umer Mir</span>
+      </div>
+      <nav>
+        <a href="#timeline">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
+
   <main>
-    <section>
-      <h2>Timeline of Work</h2>
+    <!-- HERO -->
+    <section class="section hero" aria-labelledby="intro-title">
+      <div>
+        <span class="kicker">Documentation · IA · Automation</span>
+        <h1 id="intro-title">I design scalable documentation systems and ship Docs‑as‑Code workflows.</h1>
+        <p class="lead">Documentation leader focused on information architecture, MDX/Docs‑as‑Code, content automation with GPTs, and cross‑functional delivery with Experience Design. Based in India; working globally.</p>
+        <div class="chips">
+          <span class="chip">Docs‑as‑Code (MDX, CI/CD)</span>
+          <span class="chip">IA at scale</span>
+          <span class="chip">GPT content automation</span>
+          <span class="chip">Salesforce–Chargebee</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#timeline">View Work
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+          <a class="btn secondary" href="Umer-Mir-Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+      <div class="card chart-card" aria-hidden="true">
+        <svg viewBox="0 0 420 220" width="100%" height="100%" role="img" aria-label="Decorative chart">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fb923c"/>
+              <stop offset="100%" stop-color="#f97316"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="420" height="220" rx="16" fill="#0b1220"/>
+          <g transform="translate(30,24)">
+            <text x="0" y="0" fill="#94a3b8" font-size="12">Publishing Time ↓</text>
+            <polyline fill="url(#g)" fill-opacity=".25" stroke="#fb923c" stroke-width="2"
+              points="0,150 40,144 80,128 120,106 160,88 200,66 240,54 280,48 320,46 360,44 360,176 0,176"/>
+            <text x="0" y="188" fill="#94a3b8" font-size="12">Docs‑as‑Code Adoption →</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="section" aria-labelledby="tl-title">
+      <span class="kicker">Selected Work</span>
+      <h2 id="tl-title">Timeline of impact</h2>
       <div class="timeline">
-        <div class="entry">
-          <div class="dot"></div>
-          <h3>2025 · In-App Copy Collaboration</h3>
-          <p>Partnered with Experience Design to unify UI copy and docs, tracked effort in JIRA/Confluence. Outcome: consistent UX and discoverable help links.</p>
+        <div class="row">
+          <span class="dot" aria-hidden="true"></span>
+          <article class="card item">
+            <div class="year" style="color:#334155;font-weight:900">2025</div>
+            <h3>In‑app copy collaboration with Experience Design</h3>
+            <div class="sub">Outcome: consistent UI copy and help links · Role: workflow design</div>
+            <p>Set up a cross‑functional process to align UI strings, docs, and release workflows; tracked effort via JIRA/Confluence.</p>
+            <div class="tags"><span class="tag">UX writing</span><span class="tag">Process</span></div>
+          </article>
+          <article class="card item">
+            <div class="year" style="color:#334155;font-weight:900">2024</div>
+            <h3>GPT‑powered content automation suite</h3>
+            <div class="sub">Outcome: 30–50% authoring time saved · Role: product owner</div>
+            <p>Created GPTs for style/terminology, release notes, drafting, reviews, and migrations; integrated into PR review flows.</p>
+            <div class="tags"><span class="tag">Automation</span><span class="tag">LLM</span><span class="tag">Governance</span></div>
+          </article>
         </div>
-        <div class="entry">
-          <div class="dot"></div>
-          <h3>2024 · GPT-Powered Content Automation</h3>
-          <p>Created 5 GPTs (style, release notes, draft, editorial, migration). Outcome: 30–50% authoring time saved.</p>
+        <div class="row">
+          <span class="dot" aria-hidden="true"></span>
+          <article class="card item">
+            <div class="year" style="color:#334155;font-weight:900">2024</div>
+            <h3>Docs‑as‑Code pipeline (MDX + GitHub + CI)</h3>
+            <div class="sub">Outcome: cut publishing time by 60% · Role: architect</div>
+            <p>Built MDX-ready templates, frontmatter conventions, preview builds, and automated checks (links, linting, style) for consistent quality.</p>
+            <div class="tags"><span class="tag">MDX</span><span class="tag">CI/CD</span><span class="tag">Quality gates</span></div>
+          </article>
+          <article class="card item">
+            <div class="year" style="color:#334155;font-weight:900">2023</div>
+            <h3>Information Architecture overhaul for enterprise docs</h3>
+            <div class="sub">Outcome: 25% faster discovery · Role: IA lead</div>
+            <p>Redesigned taxonomy, navigation, and content models to scale with product growth; introduced content audits and cross‑repo linking.</p>
+            <div class="tags"><span class="tag">IA</span><span class="tag">Content models</span><span class="tag">Search</span></div>
+          </article>
         </div>
-        <div class="entry">
-          <div class="dot"></div>
-          <h3>2023 · Docs-as-Code Pipeline</h3>
-          <p>Built MDX + CI/CD pipeline with templates and quality gates. Outcome: cut publishing time by 60%.</p>
-        </div>
-        <div class="entry">
-          <div class="dot"></div>
-          <h3>2022 · Information Architecture Overhaul</h3>
-          <p>Redesigned taxonomy, navigation, and search for enterprise docs. Outcome: 25% faster content discovery.</p>
-        </div>
-        <div class="entry">
-          <div class="dot"></div>
-          <h3>2021 · Salesforce–Chargebee Tables Cleanup</h3>
-          <p>Standardized mapping tables, ensured MDX compatibility. Outcome: zero ambiguity in integrations.</p>
+        <div class="row">
+          <span class="dot" aria-hidden="true"></span>
+          <article class="card item">
+            <div class="year" style="color:#334155;font-weight:900">2022</div>
+            <h3>Salesforce–Chargebee integration tables cleanup</h3>
+            <div class="sub">Outcome: zero‑ambiguity mapping tables · Role: technical writer</div>
+            <p>Standardized data mapping tables and made them MDX‑compatible for search and reuse within the documentation site.</p>
+            <div class="tags"><span class="tag">Salesforce</span><span class="tag">Chargebee</span><span class="tag">Structured content</span></div>
+          </article>
+          <article class="card item">
+            <div class="year" style="color:#334155;font-weight:900">2022</div>
+            <h3>Video docs: Grandfathering Entitlements (Trainn)</h3>
+            <div class="sub">Outcome: feature adoption uplift · Role: script & production</div>
+            <p>Produced a focused walkthrough video integrated into release notes and docs with measurable engagement improvement.</p>
+            <div class="tags"><span class="tag">Video</span><span class="tag">Enablement</span></div>
+          </article>
         </div>
       </div>
     </section>
-    <section>
-      <h2>Resume</h2>
-      <p><a href="Umer-Mir-Resume.pdf" download>Download Resume (PDF)</a></p>
+
+    <!-- SKILLS / ABOUT / CONTACT (minimal to match screenshot focus) -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <span class="kicker">Skills & Tools</span>
+      <h2 id="skills-title">How I work</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div class="card">
+          <h3>Method</h3>
+          <ul style="margin:6px 0 0 18px;color:var(--muted);line-height:1.7">
+            <li>Audit & metrics → find the friction</li>
+            <li>Architecture → content models, taxonomy, nav</li>
+            <li>Automation → MDX pipelines, checks, prompts</li>
+            <li>Governance → style, terminology, PR reviews</li>
+            <li>Measure → adoption, search, time‑to‑help</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Stack</h3>
+          <ul style="margin:6px 0 0 18px;color:var(--muted);line-height:1.7">
+            <li>MDX · Docusaurus/Next</li>
+            <li>GitHub · Actions · PR workflows</li>
+            <li>Salesforce · Chargebee</li>
+            <li>Figma · Trainn · Loom</li>
+          </ul>
+        </div>
+      </div>
     </section>
-    <section>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:umerhafeez.mir@chargebee.com">umerhafeez.mir@chargebee.com</a></p>
-      <p><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a> · <a href="https://github.com/" target="_blank">GitHub</a></p>
+
+    <section id="about" class="section" aria-labelledby="about-title">
+      <span class="kicker">About</span>
+      <h2 id="about-title">A bit about me</h2>
+      <p class="lead">I’m a documentation manager who loves turning messy, fast‑changing product surfaces into clear, scalable information experiences. Lately I’ve focused on Docs‑as‑Code, editorial governance, and AI‑assisted automation across the content lifecycle.</p>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <span class="kicker">Contact</span>
+      <h2 id="contact-title">Let’s talk</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <form class="card" action="mailto:umerhafeez.mir@chargebee.com" method="post" enctype="text/plain">
+          <label class="sr-only" for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e5e7eb;background:#fff;color:var(--ink);margin-bottom:10px"/>
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email" required style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e5e7eb;background:#fff;color:var(--ink);margin-bottom:10px"/>
+          <label class="sr-only" for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="How can I help?" required style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e5e7eb;background:#fff;color:var(--ink);"></textarea>
+          <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+            <button class="btn primary" type="submit">Send</button>
+            <span style="color:var(--muted)">Opens your email app</span>
+          </div>
+        </form>
+        <div class="card">
+          <h3>Elsewhere</h3>
+          <ul style="margin:6px 0 0 18px;color:var(--muted);line-height:1.8">
+            <li><a href="mailto:umerhafeez.mir@chargebee.com">umerhafeez.mir@chargebee.com</a></li>
+            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
-  <footer>
-    <small>© <span id="year"></span> Umer Mir</small>
-  </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
