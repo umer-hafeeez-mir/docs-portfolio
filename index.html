@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Umer Mir · Documentation & Content Systems</title>
+  <meta name="description" content="Portfolio of Umer Mir — documentation leader specializing in Docs‑as‑Code, IA, and content automation." />
+  <meta property="og:title" content="Umer Mir · Documentation & Content Systems" />
+  <meta property="og:description" content="Docs‑as‑Code, IA, and content automation portfolio" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23ff6a00' d='M128 12 28 64v128l100 52 100-52V64z'/%3E%3Cpath fill='%23fff' d='M72 92h112v16H72zM72 124h92v16H72zM72 156h112v16H72z'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0b1220;        /* slate-950 */
+      --panel: #0f172a;     /* slate-900 */
+      --card: #111827ee;    /* slate-900/93 */
+      --text: #e5e7eb;      /* slate-200 */
+      --muted: #94a3b8;     /* slate-400 */
+      --brand: #f97316;     /* orange-500 */
+      --brand-2: #fb923c;   /* orange-400 */
+      --ring: rgba(249,115,22,.35);
+      --maxw: 1100px;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #ffffff; --panel:#ffffff; --card:#ffffff; --text:#0b1220; --muted:#475569; --ring: rgba(249,115,22,.25); box-shadow: 0 10px 20px rgba(2,6,23,.08)}
+      header.blur { backdrop-filter: saturate(180%) blur(16px); background: rgba(255,255,255,.75);}
+    }
+    * { box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; background: radial-gradient(1200px 600px at 10% -20%, #1f2937 0, transparent 60%), radial-gradient(1000px 600px at 90% -20%, #111827 0, transparent 50%), var(--bg); color: var(--text); }
+    a { color: var(--brand-2); text-decoration: none }
+    a:hover { text-decoration: underline }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 50; }
+    header .wrap { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; gap: 18px; padding: 14px 20px; }
+    header.blur { backdrop-filter: blur(12px) saturate(160%); background: rgba(15,23,42,.6); border-bottom: 1px solid rgba(148,163,184,.15); }
+    .brand { display:flex; align-items:center; gap:10px; font-weight: 700 }
+    .brand svg { width: 24px; height: 24px }
+    nav { margin-left: auto; display:flex; gap: 18px }
+    nav a { color: var(--muted); font-weight: 600; letter-spacing: .2px }
+    nav a.active, nav a:hover { color: var(--text) }
+
+    /* Layout */
+    .section { max-width: var(--maxw); margin: 0 auto; padding: 72px 20px }
+    .kicker { color: var(--brand-2); font-weight: 700; letter-spacing: .3px; text-transform: uppercase; font-size: 12px }
+    h1 { font-size: clamp(32px,3.5vw,48px); line-height: 1.05; margin: 10px 0 12px; }
+    h2 { font-size: clamp(22px,2.4vw,30px); margin: 0 0 16px }
+    p.lead { color: var(--muted); font-size: clamp(16px,1.3vw,18px); max-width: 70ch }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center }
+    .hero .panel { background: linear-gradient(180deg, var(--card), transparent); border: 1px solid rgba(148,163,184,.15); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow) }
+    .hero .meta { display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px }
+    .chip { border:1px solid rgba(148,163,184,.2); color: var(--muted); padding:6px 10px; border-radius: 999px; font-size: 12px }
+
+    /* Cards */
+    .grid { display:grid; grid-template-columns: repeat(12,1fr); gap: 18px }
+    .card { grid-column: span 12; background: var(--card); border: 1px solid rgba(148,163,184,.15); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); transition: transform .2s }
+    .card:hover { transform: translateY(-2px) }
+    .card h3 { margin: 4px 0 8px }
+    .card .meta { color: var(--muted); font-size: 13px }
+    .card .tags { display:flex; flex-wrap:wrap; gap: 8px; margin-top: 10px }
+    .tag { background: rgba(249,115,22,.1); border: 1px solid rgba(249,115,22,.25); color: var(--brand-2); padding: 4px 8px; border-radius: 999px; font-size: 12px }
+
+    @media (min-width: 720px) {
+      .card { grid-column: span 6 }
+    }
+    @media (min-width: 1024px) {
+      .card { grid-column: span 4 }
+    }
+
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius: 12px; background: linear-gradient(180deg, #f97316, #ea580c); color: white; border: none; font-weight: 700; box-shadow: 0 6px 20px rgba(249,115,22,.35); cursor: pointer }
+    .btn.secondary { background: transparent; color: var(--text); border:1px solid rgba(148,163,184,.25); box-shadow:none }
+    .btn:focus { outline: 3px solid var(--ring) }
+
+    .two { display:grid; grid-template-columns: 1fr; gap: 22px }
+    @media (min-width: 900px){ .two { grid-template-columns: 1.2fr .8fr } }
+
+    .resume { background: var(--card); border: 1px solid rgba(148,163,184,.15); border-radius: var(--radius); padding: 18px }
+    .resume ul { margin: 8px 0 0 18px; line-height: 1.7; color: var(--muted) }
+
+    footer { border-top: 1px solid rgba(148,163,184,.15); color: var(--muted); padding: 30px 20px; }
+
+    /* Modal */
+    dialog { width:min(900px, 92vw); border:1px solid rgba(148,163,184,.25); background: var(--panel); color: var(--text); border-radius: 16px; box-shadow: var(--shadow) }
+    dialog::backdrop { backdrop-filter: blur(6px); background: rgba(2,6,23,.5) }
+
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Home">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1.5 2.5 6.5v11l9.5 5 9.5-5v-11z"/><path fill="#f97316" d="M6.5 8.5h11v1.8h-11zM6.5 12h9v1.8h-9zM6.5 15.5h11v1.8h-11z"/></svg>
+        <span>Umer Mir</span>
+      </a>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero" aria-labelledby="intro-title">
+      <div>
+        <span class="kicker">Documentation · IA · Automation</span>
+        <h1 id="intro-title">I design scalable documentation systems and ship Docs‑as‑Code workflows.</h1>
+        <p class="lead">Documentation leader focused on information architecture, MDX/Docs‑as‑Code, content automation with GPTs, and cross‑functional delivery with Experience Design. Based in India; working globally.</p>
+        <div class="meta">
+          <span class="chip">Docs‑as‑Code (MDX, CI/CD)</span>
+          <span class="chip">IA at scale</span>
+          <span class="chip">GPT content automation</span>
+          <span class="chip">Salesforce–Chargebee</span>
+        </div>
+        <div style="margin-top:18px; display:flex; gap:12px">
+          <a class="btn" href="#work"><span>View Work</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+          <a class="btn secondary" href="#resume">Download Resume</a>
+        </div>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <svg viewBox="0 0 400 240" width="100%" height="100%" role="img" aria-label="Decorative chart">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fb923c"/>
+              <stop offset="100%" stop-color="#f97316"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="400" height="240" rx="16" fill="#0b1220"/>
+          <g transform="translate(28,20)">
+            <text x="0" y="0" fill="#94a3b8" font-size="12">Publishing Time ↓</text>
+            <polyline fill="url(#g)" fill-opacity=".25" stroke="#fb923c" stroke-width="2"
+              points="0,160 40,150 80,130 120,110 160,90 200,65 240,55 280,50 320,48 360,45 360,180 0,180"/>
+            <text x="0" y="205" fill="#94a3b8" font-size="12">Docs‑as‑Code Adoption →</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section id="work" class="section" aria-labelledby="work-title">
+      <span class="kicker">Selected Work</span>
+      <h2 id="work-title">Case studies & samples</h2>
+      <div class="grid">
+        <!-- CARD 1 -->
+        <article class="card" tabindex="0" data-modal-target="modal-ia">
+          <h3>Information Architecture overhaul for enterprise docs</h3>
+          <p class="meta">Outcome: 25% faster content discovery · Role: IA lead</p>
+          <p>Redesigned taxonomy, navigation, and content models to scale with product growth; introduced content audits and cross‑repo linking.</p>
+          <div class="tags">
+            <span class="tag">IA</span><span class="tag">Content models</span><span class="tag">Search</span>
+          </div>
+        </article>
+        <!-- CARD 2 -->
+        <article class="card" tabindex="0" data-modal-target="modal-docs">
+          <h3>Docs‑as‑Code pipeline (MDX + GitHub + CI)</h3>
+          <p class="meta">Outcome: cut publishing time by 60% · Role: architect</p>
+          <p>Built MDX-ready templates, frontmatter conventions, preview builds, and automated checks (links, linting, style) for consistent quality.</p>
+          <div class="tags">
+            <span class="tag">MDX</span><span class="tag">CI/CD</span><span class="tag">Quality gates</span>
+          </div>
+        </article>
+        <!-- CARD 3 -->
+        <article class="card" tabindex="0" data-modal-target="modal-gpt">
+          <h3>GPT-powered content automation suite</h3>
+          <p class="meta">Outcome: 30–50% authoring time saved · Role: product owner</p>
+          <p>Created GPTs for style/terminology, release notes, drafting, reviews, and migrations; integrated into PR review flows.</p>
+          <div class="tags">
+            <span class="tag">Automation</span><span class="tag">LLM</span><span class="tag">Governance</span>
+          </div>
+        </article>
+        <!-- CARD 4 -->
+        <article class="card" tabindex="0" data-modal-target="modal-sfcb">
+          <h3>Salesforce–Chargebee integration tables cleanup</h3>
+          <p class="meta">Outcome: zero‑ambiguity mapping tables · Role: technical writer</p>
+          <p>Standardized data mapping tables and made them MDX-compatible for search and reuse within the documentation site.</p>
+          <div class="tags">
+            <span class="tag">Salesforce</span><span class="tag">Chargebee</span><span class="tag">Structured content</span>
+          </div>
+        </article>
+        <!-- CARD 5 -->
+        <article class="card" tabindex="0" data-modal-target="modal-trainn">
+          <h3>Video docs: Grandfathering Entitlements (Trainn)</h3>
+          <p class="meta">Outcome: feature adoption uplift · Role: script & production</p>
+          <p>Produced a focused walkthrough video integrated into release notes and docs with measurable engagement improvement.</p>
+          <div class="tags">
+            <span class="tag">Video</span><span class="tag">Enablement</span>
+          </div>
+        </article>
+        <!-- CARD 6 -->
+        <article class="card" tabindex="0" data-modal-target="modal-ed">
+          <h3>In‑app copy collaboration with Experience Design</h3>
+          <p class="meta">Outcome: consistent UI copy and help links · Role: workflow design</p>
+          <p>Set up a cross‑functional process to align UI strings, docs, and release workflows; tracked effort via JIRA/Confluence.</p>
+          <div class="tags">
+            <span class="tag">UX writing</span><span class="tag">Process</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <span class="kicker">Skills & Tools</span>
+      <h2 id="skills-title">What I bring</h2>
+      <div class="two">
+        <div class="resume">
+          <h3>Core strengths</h3>
+          <ul>
+            <li>Information architecture for complex product suites</li>
+            <li>Docs‑as‑Code with MDX, Git, GitHub Actions, quality gates</li>
+            <li>Content automation with GPTs and governance for scale</li>
+            <li>Stakeholder alignment across Product, Design, and Eng</li>
+            <li>Metrics & instrumentation for docs impact</li>
+          </ul>
+        </div>
+        <div class="resume">
+          <h3>Tools</h3>
+          <ul>
+            <li>MDX, Docusaurus/Next, static site generators</li>
+            <li>GitHub, Actions, PR review workflows</li>
+            <li>Salesforce, Chargebee, data mapping</li>
+            <li>Trainn, Loom; Figma for content design</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section" aria-labelledby="about-title">
+      <span class="kicker">About</span>
+      <h2 id="about-title">A bit about me</h2>
+      <p class="lead">I’m a documentation manager who loves turning messy, fast‑changing product surfaces into clear, scalable information experiences. Recently, I’ve focused on automating parts of the content lifecycle (drafting, review, release notes, and migrations) using GPTs while keeping governance tight.</p>
+    </section>
+
+    <section id="resume" class="section" aria-labelledby="resume-title">
+      <span class="kicker">Resume</span>
+      <h2 id="resume-title">Download CV</h2>
+      <p class="lead">Drop a PDF named <code>Umer-Mir-Resume.pdf</code> into this folder and link it below.</p>
+      <p>
+        <a class="btn secondary" href="Umer-Mir-Resume.pdf" download>Download Resume (PDF)</a>
+      </p>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <span class="kicker">Contact</span>
+      <h2 id="contact-title">Let’s talk</h2>
+      <div class="two">
+        <form class="resume" id="contactForm" onsubmit="sendMail(event)">
+          <label class="sr-only" for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:transparent;color:var(--text);margin-bottom:10px" />
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email" required style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:transparent;color:var(--text);margin-bottom:10px" />
+          <label class="sr-only" for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="How can I help?" required style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:transparent;color:var(--text);"></textarea>
+          <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+            <button class="btn" type="submit">Send</button>
+            <span class="muted" id="status" style="color:var(--muted)"></span>
+          </div>
+        </form>
+        <div class="resume">
+          <h3>Elsewhere</h3>
+          <ul>
+            <li><a href="mailto:umerhafeez.mir@chargebee.com">umerhafeez.mir@chargebee.com</a></li>
+            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" aria-label="Footer">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:var(--maxw);margin:0 auto">
+      <small>© <span id="year"></span> Umer Mir</small>
+      <a href="#top" class="btn secondary" aria-label="Back to top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <dialog id="modal-ia"><article class="section" style="padding:22px">
+    <h3>Information Architecture overhaul for enterprise docs</h3>
+    <p>Deep‑dive into taxonomy creation, navigation models, and a search tuning effort that led to measurable discovery improvements.</p>
+    <ul>
+      <li>Audit 2k+ pages; defined content types and templates</li>
+      <li>Introduced cross‑repo linking & faceted nav</li>
+      <li>Metrics: reduced time‑to‑help and bounce rate</li>
+    </ul>
+    <button class="btn secondary" onclick="closeModal('modal-ia')">Close</button>
+  </article></dialog>
+  <dialog id="modal-docs"><article class="section" style="padding:22px">
+    <h3>Docs‑as‑Code pipeline (MDX + GitHub + CI)</h3>
+    <p>Templates, frontmatter, and CI checks that cut review cycles and eliminated format drift.</p>
+    <ul>
+      <li>PR previews, link checking, MDX linting</li>
+      <li>Release notes generator and editorial gates</li>
+    </ul>
+    <button class="btn secondary" onclick="closeModal('modal-docs')">Close</button>
+  </article></dialog>
+  <dialog id="modal-gpt"><article class="section" style="padding:22px">
+    <h3>GPT-powered content automation suite</h3>
+    <p>Four GPTs: Style & Terminology, Release Notes, Drafting Assistant, and Editorial Reviewer; plus a migration assistant for MDX.</p>
+    <button class="btn secondary" onclick="closeModal('modal-gpt')">Close</button>
+  </article></dialog>
+  <dialog id="modal-sfcb"><article class="section" style="padding:22px">
+    <h3>Salesforce–Chargebee integration tables cleanup</h3>
+    <p>Standardized mapping tables and ensured MDX compatibility for reuse across docs.</p>
+    <button class="btn secondary" onclick="closeModal('modal-sfcb')">Close</button>
+  </article></dialog>
+  <dialog id="modal-trainn"><article class="section" style="padding:22px">
+    <h3>Grandfathering Entitlements (Trainn) video</h3>
+    <p>Scripted, narrated, and shipped an embedded walkthrough video for release adoption.</p>
+    <button class="btn secondary" onclick="closeModal('modal-trainn')">Close</button>
+  </article></dialog>
+  <dialog id="modal-ed"><article class="section" style="padding:22px">
+    <h3>In‑app copy collaboration with Experience Design</h3>
+    <p>Defined workflow, tracking, and review standards to unify product UI copy with docs.</p>
+    <button class="btn secondary" onclick="closeModal('modal-ed')">Close</button>
+  </article></dialog>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
+    const header = document.querySelector('header');
+    const onScroll = () => {
+      if (window.scrollY > 4) header.classList.add('blur');
+      else header.classList.remove('blur');
+    };
+    document.addEventListener('scroll', onScroll);
+
+    // Simple modal logic
+    const openModal = (id) => document.getElementById(id).showModal();
+    const closeModal = (id) => document.getElementById(id).close();
+
+    document.querySelectorAll('[data-modal-target]').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.modalTarget));
+      card.addEventListener('keypress', (e) => { if (e.key === 'Enter') openModal(card.dataset.modalTarget); });
+    });
+
+    // Contact form - mailto fallback (no backend needed)
+    function sendMail(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const body = encodeURIComponent(`Hi Umer,%0D%0A%0D%0A${message}%0D%0A%0D%0A— ${name}%0D%0A${email}`);
+      const mail = `mailto:umerhafeez.mir@chargebee.com?subject=Portfolio%20contact%20from%20${encodeURIComponent(name)}&body=${body}`;
+      window.location.href = mail;
+      document.getElementById('status').textContent = 'Opening your email app…';
+    }
+  </script>
+</body>
+</html>
